@@ -2,12 +2,7 @@
 
 ### 🖥️ Frontend (Flutter)
 <div align="center">
-
-![Flutter](https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white)  
-![Dart](https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white)  
-![Provider](https://img.shields.io/badge/Provider-FF6F00?style=for-the-badge&logo=flutter&logoColor=white)  
-![custom_calendar](https://img.shields.io/badge/custom__calendar-00BFA5?style=for-the-badge&logo=flutter&logoColor=white)  
-
+![Flutter](https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white) ![Dart](https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white) ![Provider](https://img.shields.io/badge/Provider-FF6F00?style=for-the-badge&logo=flutter&logoColor=white) ![custom_calendar](https://img.shields.io/badge/custom__calendar-00BFA5?style=for-the-badge&logo=flutter&logoColor=white)
 </div>
 
 - **언어 & 프레임워크**: Flutter (>=2.10), Dart (>=2.16)  
@@ -18,21 +13,13 @@
 
 ### ⚙️ Backend (FastAPI + MySQL)
 <div align="center">
-
-![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)  
-![Python 3.10+](https://img.shields.io/badge/Python_3.11+-3776AB?style=for-the-badge&logo=python&logoColor=white)  
-![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-376E8B?style=for-the-badge&logo=sqlalchemy&logoColor=white)  
-![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)  
-![Pydantic](https://img.shields.io/badge/Pydantic-176F9C?style=for-the-badge&logo=pydantic&logoColor=white)  
-![python-jose](https://img.shields.io/badge/python--jose-000000?style=for-the-badge&logo=json-web-tokens&logoColor=white)  
-![Uvicorn](https://img.shields.io/badge/Uvicorn-000000?style=for-the-badge&logo=uvicorn&logoColor=white)  
-
+![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white) ![Python 3.10+](https://img.shields.io/badge/Python_3.11+-3776AB?style=for-the-badge&logo=python&logoColor=white) ![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-376E8B?style=for-the-badge&logo=sqlalchemy&logoColor=white) ![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white) ![Pydantic](https://img.shields.io/badge/Pydantic-176F9C?style=for-the-badge&logo=pydantic&logoColor=white) ![python-jose](https://img.shields.io/badge/python--jose-000000?style=for-the-badge&logo=json-web-tokens&logoColor=white) ![Uvicorn](https://img.shields.io/badge/Uvicorn-000000?style=for-the-badge&logo=uvicorn&logoColor=white)
 </div>
 
 - **언어 & 프레임워크**: Python 3.11+, FastAPI  
 - **비동기 ORM**: SQLAlchemy (AsyncSession)  
 - **스키마·유효성 검사**: Pydantic (FastAPI 내장)  
-- **DB 서버**: MySQL 
+- **DB 서버**: MySQL  
 - **웹 서버**: Uvicorn  
 - **인증·인가**:  
   - JWT (발급·검증 via python-jose)  
@@ -45,29 +32,18 @@
 
 ### 🔒 보안 및 인증
 <div align="center">
-
-![JWT](https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=json-web-tokens&logoColor=white)  
-![HTTPS](https://img.shields.io/badge/HTTPS-4285F4?style=for-the-badge&logo=google-chrome&logoColor=white)  
-
+![JWT](https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=json-web-tokens&logoColor=white) ![HTTPS](https://img.shields.io/badge/HTTPS-4285F4?style=for-the-badge&logo=google-chrome&logoColor=white)
 </div>
 
 - **토큰 기반 인증**: JWT (python-jose)  
 - **쿠키 설정**: Secure, HttpOnly, SameSite=None 옵션  
-- **API 보안**: FastAPI 의존성 주입
+- **API 보안**: FastAPI 의존성 주입으로 `get_current_user` 구현  
 
 ---
 
 ### 🤖 LLM & RAG
 <div align="center">
-
-![LangChain](https://img.shields.io/badge/LangChain-FF6C37?style=for-the-badge&logo=langchain&logoColor=white)  
-![OpenAI](https://img.shields.io/badge/OpenAI-000000?style=for-the-badge&logo=openai&logoColor=white)  
-![Claude](https://img.shields.io/badge/Claude-3399FF?style=for-the-badge&logo=anthropic&logoColor=white)  
-![FAISS](https://img.shields.io/badge/FAISS-5243AA?style=for-the-badge&logo=faiss&logoColor=white)  
-![SentenceTransformer](https://img.shields.io/badge/SentenceTransformer-0072C6?style=for-the-badge&logo=transformer&logoColor=white)  
-![Fugashi](https://img.shields.io/badge/Fugashi-00B4D8?style=for-the-badge&logo=python&logoColor=white)  
-![BM25](https://img.shields.io/badge/BM25Okapi-3178C6?style=for-the-badge&logo=python&logoColor=white)  
-
+![LangChain](https://img.shields.io/badge/LangChain-FF6C37?style=for-the-badge&logo=langchain&logoColor=white) ![OpenAI](https://img.shields.io/badge/OpenAI-000000?style=for-the-badge&logo=openai&logoColor=white) ![Claude](https://img.shields.io/badge/Claude-3399FF?style=for-the-badge&logo=anthropic&logoColor=white) ![FAISS](https://img.shields.io/badge/FAISS-5243AA?style=for-the-badge&logo=faiss&logoColor=white) ![SentenceTransformer](https://img.shields.io/badge/SentenceTransformer-0072C6?style=for-the-badge&logo=transformer&logoColor=white) ![Fugashi](https://img.shields.io/badge/Fugashi-00B4D8?style=for-the-badge&logo=python&logoColor=white) ![BM25](https://img.shields.io/badge/BM25Okapi-3178C6?style=for-the-badge&logo=python&logoColor=white)
 </div>
 
 - **LLM 프레임워크**: LangChain  
@@ -93,7 +69,6 @@
 ## 🌳 주요 기능
 
 <div align="center">
-
 | 기능                            | 설명                                                               | 상태 |
 |:------------------------------:|:-----------------------------------------------------------------:|:---:|
 | 🔐 **회원가입·로그인 (Auth)**    | 이메일/비밀번호 + 트위터 쿠키 기반 검증 → JWT 발급 및 쿠키 저장        | ![완료](https://img.shields.io/badge/완료-28a745?style=flat-square) |
@@ -103,5 +78,4 @@
 | 📱 **포스트(트윗) 상세·리플라이** | 포스트 본문 & 이미지 그리드 표시 → 리플라이 작성/전송 → 자동 생성 기능          | ![완료](https://img.shields.io/badge/완료-28a745?style=flat-square) |
 | 👤 **프로필 조회**             | 유저 프로필(이름·스크린네임·팔로워·바이오) 불러오기 & 표시            | ![완료](https://img.shields.io/badge/완료-28a745?style=flat-square) |
 | ⚙️ **설정 (Settings)**          | 다크 모드 토글 (SharedPreferences), 기타 커스텀 환경설정                  | ![완료](https://img.shields.io/badge/완료-28a745?style=flat-square) |
-
 </div>
