@@ -3,7 +3,10 @@
 ### 🖥️ Frontend (Flutter)
 <div align="center">
 
-![Flutter](https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white) ![Dart](https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white) ![Provider](https://img.shields.io/badge/Provider-FF6F00?style=for-the-badge&logo=flutter&logoColor=white) ![custom_calendar](https://img.shields.io/badge/custom__calendar-00BFA5?style=for-the-badge&logo=flutter&logoColor=white)
+![Flutter](https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white)  
+![Dart](https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white)  
+![Provider](https://img.shields.io/badge/Provider-FF6F00?style=for-the-badge&logo=flutter&logoColor=white)  
+![custom_calendar](https://img.shields.io/badge/custom__calendar-00BFA5?style=for-the-badge&logo=flutter&logoColor=white)  
 
 </div>
 
@@ -16,20 +19,26 @@
 ### ⚙️ Backend (FastAPI + MySQL)
 <div align="center">
 
-![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white) ![Python 3.11+](https://img.shields.io/badge/Python_3.11+-3776AB?style=for-the-badge&logo=python&logoColor=white) ![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-376E8B?style=for-the-badge&logo=sqlalchemy&logoColor=white) ![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white) ![Pydantic](https://img.shields.io/badge/Pydantic-176F9C?style=for-the-badge&logo=pydantic&logoColor=white) ![python-jose](https://img.shields.io/badge/python--jose-000000?style=for-the-badge&logo=json-web-tokens&logoColor=white) ![Uvicorn](https://img.shields.io/badge/Uvicorn-000000?style=for-the-badge&logo=uvicorn&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)  
+![Python 3.10+](https://img.shields.io/badge/Python_3.11+-3776AB?style=for-the-badge&logo=python&logoColor=white)  
+![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-376E8B?style=for-the-badge&logo=sqlalchemy&logoColor=white)  
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)  
+![Pydantic](https://img.shields.io/badge/Pydantic-176F9C?style=for-the-badge&logo=pydantic&logoColor=white)  
+![python-jose](https://img.shields.io/badge/python--jose-000000?style=for-the-badge&logo=json-web-tokens&logoColor=white)  
+![Uvicorn](https://img.shields.io/badge/Uvicorn-000000?style=for-the-badge&logo=uvicorn&logoColor=white)  
 
 </div>
 
-- **언어 & 프레임워크**: Python 3.10+, FastAPI  
+- **언어 & 프레임워크**: Python 3.11+, FastAPI  
 - **비동기 ORM**: SQLAlchemy (AsyncSession)  
 - **스키마·유효성 검사**: Pydantic (FastAPI 내장)  
-- **DB 서버**: MySQL (또는 다른 SQL 계열)  
+- **DB 서버**: MySQL 
 - **웹 서버**: Uvicorn  
 - **인증·인가**:  
-  - JWT (발급·검증 via python‐jose)  
+  - JWT (발급·검증 via python-jose)  
 - **외부 API 연동**:  
-  - Twikit 라이브러리 (트윗 스크래핑/페이징)  
-  - Selenium (t.co 트위터 단축링크 resolving)  
+  - Twikit (트윗 스크래핑 / 페이징)  
+  - Selenium (t.co URL 해석 용도)  
 - **마이그레이션/관리**: Alembic  
 
 ---
@@ -37,50 +46,47 @@
 ### 🔒 보안 및 인증
 <div align="center">
 
-![JWT](https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=json-web-tokens&logoColor=white) ![HTTPS](https://img.shields.io/badge/HTTPS-4285F4?style=for-the-badge&logo=lock&logoColor=white) ![OAuth2](https://img.shields.io/badge/OAuth2-0C6CF2?style=for-the-badge&logo=oauth&logoColor=white)
+![JWT](https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=json-web-tokens&logoColor=white)  
+![HTTPS](https://img.shields.io/badge/HTTPS-4285F4?style=for-the-badge&logo=google-chrome&logoColor=white)  
 
 </div>
 
-- **토큰 기반 인증**: JWT (python‐jose)  
+- **토큰 기반 인증**: JWT (python-jose)  
 - **쿠키 설정**: Secure, HttpOnly, SameSite=None 옵션  
-- **API 보안**: FastAPI 의존성 주입으로 `get_current_user` 구현  
-- **TLS/SSL 적용 권장** (배포 시 HTTPS)  
+- **API 보안**: FastAPI 의존성 주입
 
 ---
 
-### 📦 기타 라이브러리 및 도구
-- **환경 변수 관리**: python‐dotenv 또는 FastAPI `Settings` (Pydantic 기반)  
-- **도커라이즈(컨테이너화)**: Docker (백엔드)  
-- **CI/CD**: GitHub Actions (권장)  
-- **로깅**: Python `logging` 모듈 (Backend)  
-- **이메일 전송 (Backend)**: FastAPI Email 관련 라이브러리 (추후 필요 시)  
-
----
-
-## 🤖 LLM & RAG
+### 🤖 LLM & RAG
 <div align="center">
 
-![LangChain](https://img.shields.io/badge/LangChain-FF6C37?style=for-the-badge&logo=langchain&logoColor=white) ![OpenAI](https://img.shields.io/badge/OpenAI-000000?style=for-the-badge&logo=openai&logoColor=white) ![Claude](https://img.shields.io/badge/Claude-3399FF?style=for-the-badge&logo=anthropic&logoColor=white) ![FAISS](https://img.shields.io/badge/FAISS-5243AA?style=for-the-badge&logo=faiss&logoColor=white) ![SentenceTransformer](https://img.shields.io/badge/SentenceTransformer-0072C6?style=for-the-badge&logo=transformer&logoColor=white) ![Fugashi](https://img.shields.io/badge/Fugashi-00B4D8?style=for-the-badge&logo=python&logoColor=white) ![BM25Okapi](https://img.shields.io/badge/BM25Okapi-3178C6?style=for-the-badge&logo=python&logoColor=white)
+![LangChain](https://img.shields.io/badge/LangChain-FF6C37?style=for-the-badge&logo=langchain&logoColor=white)  
+![OpenAI](https://img.shields.io/badge/OpenAI-000000?style=for-the-badge&logo=openai&logoColor=white)  
+![Claude](https://img.shields.io/badge/Claude-3399FF?style=for-the-badge&logo=anthropic&logoColor=white)  
+![FAISS](https://img.shields.io/badge/FAISS-5243AA?style=for-the-badge&logo=faiss&logoColor=white)  
+![SentenceTransformer](https://img.shields.io/badge/SentenceTransformer-0072C6?style=for-the-badge&logo=transformer&logoColor=white)  
+![Fugashi](https://img.shields.io/badge/Fugashi-00B4D8?style=for-the-badge&logo=python&logoColor=white)  
+![BM25](https://img.shields.io/badge/BM25Okapi-3178C6?style=for-the-badge&logo=python&logoColor=white)  
 
 </div>
 
-- **LLM 프레임워크**: LangChain (RAG 파이프라인 관리)  
-- **벡터 DB / 임베딩 검색**:  
+- **LLM 프레임워크**: LangChain  
+- **벡터 검색 / 임베딩**:  
   - FAISS (semantic 검색)  
-  - BM25Okapi (lexical 검색 via Fugashi 일본어 토크나이저)  
+  - BM25Okapi (lexical 검색; Fugashi 일본어 형태소 분석)  
   - Sentence-Transformers (`all-MiniLM-L6-v2` 임베딩 모델)  
-  - Fugashi (일본어 형태소 분석)  
+  - Fugashi (일본어 토크나이저)  
 - **모델 API**:  
-  - OpenAI (`o4-mini`)  
+  - OpenAI (`o4-mini-2025-04-16`)  
   - Claude (`claude-3-7-sonnet`, `claude-3-5-haiku`)  
 - **텍스트 전처리·후처리**:  
   - 해시태그/RT 접두사 마스킹 & 복원 (TextMasker)  
   - 이모지 추출 및 복원  
-- **파이프라인**:  
-  - 번역 (TranslationChain: 마스킹 → LLM 번역 → 복원)  
-  - 분류 (ClassificationChain: 카테고리·제목·상세정보 추출)  
-  - 일정 추출 (ScheduleChain: 날짜/시간 분석)  
-  - 자동 리플라이 (ReplyChain: 상황별 리플라이 생성)  
+- **파이프라인 구성**:  
+  - **TranslationChain**: 마스킹 → LLM 번역 → 마스킹 복원  
+  - **ClassificationChain**: 카테고리·제목·상세정보 추출  
+  - **ScheduleChain**: 텍스트 내 날짜/시간 추출  
+  - **ReplyChain**: 자동 리플라이 생성  
 
 ---
 
