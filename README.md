@@ -1,3 +1,42 @@
+<div align="center">
+
+![GitHub README md 메인 이미지](https://raw.githubusercontent.com/Oshinavi/Oshinavi/main/thumbnail.jpg)
+
+## 📌 오시나비(推しナビ)
+## LLM 활용 트위터 일-한 번역 및 이벤트 일정 관리 서비스
+
+</div>
+
+---
+
+## 🎯 프로젝트 소개
+
+<details>
+<summary>💡 <b>개발 동기 및 목적</b> (클릭)</summary>
+
+| 구분 | 내용 |
+|------|------|
+| **🎯 Target** | 일본의 아티스트를 응원하는 해외(한국) 팬(이벤터) |
+| **❗ Problem** | 1. 정확하지 않은 트위터의 기계식 번역<br>2. 번역 및 리플라이를 위한 수동 번역기 사용의 번거로움<br>3. 텍스트 기반 이벤트 정보 제공으로 인한 이벤트 일정 정리의 번거로움 |
+| **✅ Solution** | 1. LLM+RAG 기반 문맥 기반 번역 제공으로 보다 자연스러운 번역 제공<br>2. 리플라이 few-shot 제공으로 상황에 맞는 리플라이 예시 생성 <br>3. 자동 이벤트 정보 추출 및 캘린더 등록 <br>4. 상기 기능이 실제 트위터와 연동될 것 |
+
+</details>
+
+### 🌟 프로젝트 특장점
+
+<div align="center">
+
+```mermaid
+graph TD
+    A[📱 All-in-one] --> B[트위터 연동 + LLM 기반 자동 번역 제공]
+    C[✨ 높은 번역 품질] --> D[RAG 컨텍스트 기반 보정]
+    E[📅 자동 이벤트 정리] --> F[텍스트 분석을 통한 이벤트 정보 자동 등록 ]
+    G[🧩 높은 확장성] --> H[LangChain을 통한 모듈화 관리]
+```
+
+</div>
+
+
 ## 💻 기술 스택
 
 ### 🖥️ Frontend (Flutter)
