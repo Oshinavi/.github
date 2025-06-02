@@ -49,7 +49,13 @@ graph TD
 
 - **언어 & 프레임워크**: Flutter (>=2.10), Dart (>=2.16)  
 - **상태 관리**: Provider  
-- **캘린더 UI 컴포넌트**: custom_calendar  
+- **캘린더 UI 컴포넌트**: custom_calendar
+
+이 프로젝트는 [pickywawa/infinite_calendar_view](https://github.com/pickywawa/infinite_calendar_view) 를  
+포크하여 `custom_calendar/` 폴더에서 직접 수정한 버전을 사용합니다.  
+변경된 부분:
+- 날짜 선택 UI 커스터마이징
+- 월 전환 애니메이션 개선
 
 ---
 
