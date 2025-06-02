@@ -11,6 +11,10 @@
 
 ## 🎯 프로젝트 소개
 
+오시나비는 트위터 기반 정보 제공 및 소통이 이루어지는 일본의 전반적인 아티스트 업계가 갖는 언어 및 정보 장벽을 뛰어넘어,
+트위터와 연동되어 문맥 기반 자동 번역을 제공하고
+이벤트 일정 자동 분석 및 캘린더 등록 기능을 제공하는 서비스입니다.
+
 <details>
 <summary>💡 <b>개발 동기 및 목적</b> (클릭)</summary>
 
@@ -36,6 +40,244 @@ graph TD
 
 </div>
 
+---
+
+## 🏛️ 시스템 아키텍처
+
+<div align="center">
+
+```mermaid
+graph TB
+    User[👤 User] --> Client[📱 Flutter Client]
+    
+    subgraph Docker["🐳 Docker Compose"]
+        subgraph APIServer["⚙️ API Server"]
+            LangChain[🤖 LangChain Pipeline]
+            Crawler[🔍 Crawler]
+        end
+        
+        subgraph CrawlerDetail["🕷️ Crawler Components"]
+            Twikit[📡 Twikit]
+            Selenium[🌐 Selenium]
+        end
+        
+        subgraph RAGSystem["🧠 RAG"]
+            FAISS[(🗄️ FAISS VectorDB)]
+            Fugashi[🔧 Fugashi Tokenizer]
+        end
+        
+        MySQL[(🗃️ MySQL DB)]
+    end
+    
+    subgraph External["🌐 External Services"]
+        Twitter[🐦 X/Twitter]
+        LLMAPIs["🤖 LLM API"]
+    end
+    
+    Client <--> APIServer
+    Crawler --> CrawlerDetail
+    Twikit <--> Twitter
+    Selenium --> Twitter
+    LangChain --> RAGSystem
+    LangChain --> LLMAPIs
+    APIServer --> MySQL
+    RAGSystem --> LangChain
+    
+    style Client fill:#02569B,stroke:#fff,stroke-width:2px,color:#fff
+    style LangChain fill:#FF6C37,stroke:#fff,stroke-width:2px,color:#fff
+    style Crawler fill:#009688,stroke:#fff,stroke-width:2px,color:#fff
+    style Twikit fill:#1DA1F2,stroke:#fff,stroke-width:2px,color:#fff
+    style Selenium fill:#43B02A,stroke:#fff,stroke-width:2px,color:#fff
+    style FAISS fill:#5243AA,stroke:#fff,stroke-width:2px,color:#fff
+    style MySQL fill:#4479A1,stroke:#fff,stroke-width:2px,color:#fff
+    style Twitter fill:#000,stroke:#fff,stroke-width:2px,color:#fff
+    style LLMAPIs fill:#412991,stroke:#fff,stroke-width:2px,color:#fff
+    style Docker fill:#2496ED,stroke:#fff,stroke-width:2px,color:#fff
+```
+
+</div>
+
+---
+
+## 🔄 LLM 파이프라인 처리 흐름
+
+<div align="center">
+
+```mermaid
+graph TD
+    Input["🐦 트위터 원문 Post"]
+    
+    %% 4개 처리 경로 분기점
+    Input --> TranslationPath["🔵 번역 경로"]
+    Input --> ClassificationPath["🟡 분류 경로"] 
+    Input --> SchedulePath["🟢 추출 경로"]
+    Input --> ReplyPath["🔴 리플라이 생성 경로"]
+    
+    %% 번역 경로: 전체 파이프라인
+    subgraph TranslationFlow["🔵 번역 처리 흐름"]
+        PreProcess[1️⃣ Pre-Processing]
+        TranslationRAG[2️⃣ RAG Context<br/>FAISS + Fugashi]
+        TranslationLLM[3️⃣ Claude LLM]
+        PostProcess[4️⃣ Post-Processing]
+    end
+    
+    %% 분류 경로: RAG + LLM
+    subgraph ClassificationFlow["🟡 분류 처리 흐름"]
+        ClassificationRAG[2️⃣ RAG Context<br/>FAISS + Fugashi]
+        ClassificationLLM[3️⃣ OpenAI LLM]
+    end
+    
+    %% 추출 경로: LLM만
+    subgraph ScheduleFlow["🟢 추출 처리 흐름"]
+        ScheduleLLM[3️⃣ OpenAI LLM]
+    end
+    
+    %% 리플라이 생성 경로: LLM만  
+    subgraph ReplyFlow["🔴 리플라이 생성 처리 흐름"]
+        ReplyLLM[3️⃣ Claude LLM]
+    end
+    
+    %% Few-shot Examples
+    FewShot["📝 Few-shot Examples"]
+    TwitterReplies["🐦 실제 트위터 리플라이<br/>실시간 수집 데이터"]
+    
+    Output["💾 DB 저장 / Response"]
+    
+    %% 연결
+    TranslationPath --> PreProcess
+    PreProcess --> TranslationRAG
+    TranslationRAG --> TranslationLLM
+    TranslationLLM --> PostProcess
+    PostProcess --> Output
+    
+    ClassificationPath --> ClassificationRAG
+    ClassificationRAG --> ClassificationLLM
+    ClassificationLLM --> Output
+    
+    SchedulePath --> ScheduleLLM
+    ScheduleLLM --> Output
+    
+    ReplyPath --> ReplyLLM
+    ReplyLLM --> Output
+    
+    %% Few-shot 연결
+    FewShot -.-> TranslationLLM
+    FewShot -.-> ClassificationLLM
+    FewShot -.-> ScheduleLLM
+    TwitterReplies -.-> ReplyLLM
+    
+    %% 스타일링
+    style Input fill:#4CAF50,stroke:#fff,stroke-width:3px,color:#fff
+    style Output fill:#4CAF50,stroke:#fff,stroke-width:3px,color:#fff
+    
+    style TranslationPath fill:#2196F3,stroke:#fff,stroke-width:2px,color:#fff
+    style ClassificationPath fill:#FF9800,stroke:#fff,stroke-width:2px,color:#fff
+    style SchedulePath fill:#4CAF50,stroke:#fff,stroke-width:2px,color:#fff
+    style ReplyPath fill:#F44336,stroke:#fff,stroke-width:2px,color:#fff
+    
+    style TranslationFlow fill:#E3F2FD,stroke:#2196F3,stroke-width:2px
+    style ClassificationFlow fill:#FFF3E0,stroke:#FF9800,stroke-width:2px
+    style ScheduleFlow fill:#E8F5E8,stroke:#4CAF50,stroke-width:2px
+    style ReplyFlow fill:#FFEBEE,stroke:#F44336,stroke-width:2px
+    
+    style FewShot fill:#9C27B0,stroke:#fff,stroke-width:2px,color:#fff
+    style TwitterReplies fill:#1DA1F2,stroke:#fff,stroke-width:2px,color:#fff
+    
+    %% 링크 색상
+    linkStyle 0 stroke:#2196F3,stroke-width:3px
+    linkStyle 1 stroke:#FF9800,stroke-width:3px
+    linkStyle 2 stroke:#4CAF50,stroke-width:3px
+    linkStyle 3 stroke:#F44336,stroke-width:3px
+    
+    linkStyle 4 stroke:#2196F3,stroke-width:3px
+    linkStyle 5 stroke:#2196F3,stroke-width:3px
+    linkStyle 6 stroke:#2196F3,stroke-width:3px
+    linkStyle 7 stroke:#2196F3,stroke-width:3px
+    linkStyle 8 stroke:#2196F3,stroke-width:3px
+    
+    linkStyle 9 stroke:#FF9800,stroke-width:3px
+    linkStyle 10 stroke:#FF9800,stroke-width:3px
+    linkStyle 11 stroke:#FF9800,stroke-width:3px
+    
+    linkStyle 12 stroke:#4CAF50,stroke-width:3px
+    linkStyle 13 stroke:#4CAF50,stroke-width:3px
+    
+    linkStyle 14 stroke:#F44336,stroke-width:3px
+    linkStyle 15 stroke:#F44336,stroke-width:3px
+```
+
+</div>
+
+### 🎯 파이프라인 특징
+
+- **🔵 번역**: 전체 4단계 파이프라인으로 최고 품질 번역 제공
+- **🟡 분류**: RAG 기반 컨텍스트 분석으로 정확한 카테고리 분류  
+- **🟢 추출**: 직접 LLM 처리로 빠른 일정 정보 추출
+- **🔴 리플라이**: 실제 트위터 리플라이 데이터를 Few-shot으로 활용한 자연스러운 응답 생성
+
+---
+
+## 🧠 RAG 컨텍스트 추출 과정
+
+<div align="center">
+
+```mermaid
+graph TD
+    UserQuery["🔍 User Query<br/>(트위터 포스트)"]
+    
+    subgraph RAGProcess["🧠 RAG 컨텍스트 추출"]
+        Lexical["📝 Lexical Retrieval<br/>(BM25Okapi)"]
+        Semantic["🔮 Semantic Retrieval<br/>(FAISS + Embedding)"]
+        
+        subgraph Scoring["📊 스코어링"]
+            LexicalScore["L̃ᵢ = bᵢ/max_j bⱼ"]
+            SemanticScore["S̃ᵢ = dᵢ/max_j dⱼ"]
+            FinalScore["Scoreᵢ = α·L̃ᵢ + β·S̃ᵢ"]
+        end
+        
+        TopK["🎯 Top-k 결과 선택"]
+    end
+    
+    Output["📤 최적 컨텍스트<br/>LLM 프롬프트에 삽입"]
+    
+    UserQuery --> Lexical
+    UserQuery --> Semantic
+    
+    Lexical --> LexicalScore
+    Semantic --> SemanticScore
+    
+    LexicalScore --> FinalScore
+    SemanticScore --> FinalScore
+    
+    FinalScore --> TopK
+    TopK --> Output
+    
+    style UserQuery fill:#4CAF50,stroke:#fff,stroke-width:2px,color:#fff
+    style Output fill:#4CAF50,stroke:#fff,stroke-width:2px,color:#fff
+    style Lexical fill:#FF9800,stroke:#fff,stroke-width:2px,color:#fff
+    style Semantic fill:#2196F3,stroke:#fff,stroke-width:2px,color:#fff
+    style FinalScore fill:#9C27B0,stroke:#fff,stroke-width:2px,color:#fff
+    style TopK fill:#F44336,stroke:#fff,stroke-width:2px,color:#fff
+```
+
+</div>
+
+### 🎯 하이브리드 검색 알고리즘
+
+| 구분 | 기술 | 설명 |
+|------|------|------|
+| **📝 Lexical 검색** | **BM25Okapi** | 일본어 형태소(Fugashi) 단위로 토큰화 후, TF-IDF 기반 키워드 유사도 계산 |
+| **🔮 Semantic 검색** | **FAISS + Embedding** | all-MiniLM-L6-v2로 쿼리 벡터화 후, FAISS 인덱스에서 코사인 유사도 계산 |
+| **⚖️ 점수 정규화** | **Score Normalization** | 각 스코어 정규화 후, 각각에 가중치(α, β) 곱연산 수 더해 최종 점수 산출 |
+| **🎯 결과 선택** | **Top-k Selection** | Top-k개 일본어-한국어 어휘쌍 컨텍스트를 반환하여 **프롬프트에 삽입** |
+
+### 💡 핵심 특징
+- **이중 검색**: 키워드 매칭과 의미적 유사성을 동시 고려
+- **정밀 토큰화**: Fugashi를 통한 일본어 특화 형태소 분석
+- **가중치 조절**: α, β 파라미터로 검색 방식 간 균형 조정
+- **실시간 처리**: 효율적인 벡터 인덱싱으로 빠른 응답 속도 보장
+
+---
 
 ## 💻 기술 스택
 
@@ -129,7 +371,7 @@ graph TD
 |:------------------------------:|:-----------------------------------------------------------------:|:---:|
 | 🔐 **회원가입·로그인 (Auth)** | 이메일/비밀번호 + 트위터 쿠키 기반 검증 → JWT 발급 및 쿠키 저장  | ![완료](https://img.shields.io/badge/완료-28a745?style=flat-square) |
 | 🏠 **홈 피드** | 사용자의 최애(오시) 등록 상태에 따라 트윗 목록 표시 및 페이징  | ![완료](https://img.shields.io/badge/완료-28a745?style=flat-square) |
-| 💖 **오시 관리** | 트위터 스크린네임 입력 → 트위터 프로필/바이오 정보 표시 및 변경/삭제 기능  | ![완료](https://img.shields.io/badge/완료-28a745?style=flat-square) |
+| 💖 **최애 관리** | 트위터 스크린네임 입력 → 트위터 프로필/바이오 정보 표시 및 변경/삭제 기능  | ![완료](https://img.shields.io/badge/완료-28a745?style=flat-square) |
 | 📆 **일정 추출 & 등록** | 트윗 메타데이터 추출 → 제목·카테고리·시간 입력 → 일정 등록 (FastAPI ↔ MySQL) | ![완료](https://img.shields.io/badge/완료-28a745?style=flat-square) |
 | 📱 **포스트(트윗) 상세·리플라이** | 포스트 본문 & 이미지 그리드 표시 → 리플라이 작성/전송 → 자동 생성 기능  | ![완료](https://img.shields.io/badge/완료-28a745?style=flat-square) |
 | 👤 **프로필 조회** | 유저 프로필(이름·스크린네임·팔로워·바이오) 불러오기 & 표시  | ![완료](https://img.shields.io/badge/완료-28a745?style=flat-square) |
