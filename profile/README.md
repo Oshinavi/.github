@@ -43,6 +43,10 @@ graph TD
 ## 🏛️ 시스템 아키텍처
 
 <div align="center">
+<img src="https://github.com/user-attachments/assets/23ef2bdd-c3df-4ba8-bc48-c4851c85cd72" alt="번역 성능 비교" width="500" />
+</div>
+
+<div align="center">
 
 ```mermaid
 graph TB
