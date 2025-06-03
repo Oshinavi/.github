@@ -108,7 +108,7 @@ graph TB
 
 #### 🤖 LLM Pipeline
 - **각 기능을 독립된 LLMChain으로 구현**: (유지보수·기능 확장성)
-- **무손실 멀티미디어 전후처리**: 번역 중 의미왜곡 방지 및 번역 품질 향상
+- **무손실 멀티미디어 전후처리로 번역 중**: 의미왜곡 방지 및 번역 품질 향상
 - **RAG 기반 프롬프팅**: 번역 정확도 향상
 
 ---
@@ -246,6 +246,13 @@ graph TD
 - **🟢 추출**: 직접 LLM 처리로 빠른 일정 정보 추출
 - **🔴 리플라이**: 실제 트위터 리플라이 데이터를 Few-shot으로 활용한 자연스러운 응답 생성
 
+### 💡 성능 향상을 위해 사용한 기법
+
+- **문맥 기반 번역**: RAG를 통한 도메인 특화 용어 정확도 향상
+- **Few-shot 프롬프팅**: 고품질 번역 예시를 통한 번역 일관성 개선
+- **하이브리드 검색**: Lexical + Semantic 검색으로 최적 컨텍스트 제공
+- **전후처리 파이프라인**: 해시태그, 이모지 등 멀티미디어 요소 무손실 처리
+
 ---
 
 ## 🧠 RAG 컨텍스트 추출 과정
@@ -308,6 +315,60 @@ graph TD
 - **정밀 토큰화**: Fugashi를 통한 일본어 특화 형태소 분석
 - **가중치 조절**: α, β 파라미터로 검색 방식 간 균형 조정
 - **실시간 처리**: 효율적인 벡터 인덱싱으로 빠른 응답 속도 보장
+
+---
+
+## 📊 번역 성능 평가
+
+### 🎯 성능 비교 결과
+
+LLM+Few-shot prompting과 RAG를 적용하여 일본어-한국어 번역 품질이 크게 개선되었습니다.
+
+<div align="center">
+
+```mermaid
+graph TD
+    Google["🔴 Google 번역<br/><b>ROUGE-1: 0.3011</b><br/><b>BERTScore: 0.9014</b>"]
+    Baseline["🟡 Baseline LLM<br/><b>ROUGE-1: 0.4812</b><br/><b>BERTScore: 0.9531</b>"]
+    RAG["🟢 LLM+RAG 적용<br/><b>ROUGE-1: 0.5034</b><br/><b>BERTScore: 0.9547</b>"]
+    
+    Google ==> Baseline
+    Baseline ==> RAG
+    
+    style Google fill:#FFE6E6,stroke:#D32F2F,stroke-width:3px,color:#000
+    style Baseline fill:#FFF2CC,stroke:#F57F17,stroke-width:3px,color:#000
+    style RAG fill:#E8F5E8,stroke:#388E3C,stroke-width:3px,color:#000
+    
+    linkStyle 0 stroke:#666,stroke-width:4px
+    linkStyle 1 stroke:#666,stroke-width:4px
+```
+
+</div>
+
+### 📈 상세 성능 지표
+
+| 평가 모델 | ROUGE-1 | ROUGE-2 | ROUGE-L | BERTScore F1 |
+|:--------:|:-------:|:-------:|:-------:|:------------:|
+| **🔴 Google 번역** | 0.3011 | 0.1426 | 0.3005 | 0.9014 |
+| **🟡 LLM+Few-shot** | 0.4812 | 0.2488 | 0.4801 | 0.9531 |
+| **🟢 LLM+Few-shot+RAG 적용** | **0.5034** | **0.2861** | **0.5030** | **0.9547** |
+
+### 📊 단계별 성능 개선율
+
+| 지표 | Google → Baseline | Baseline → RAG적용 |
+|:----:|:-----------------:|:-----------------:|
+| **ROUGE-1** | +59.8% | +4.6% |
+| **ROUGE-2** | +74.5% | +15.0% |
+| **ROUGE-L** | +59.8% | +4.8% |
+| **BERTScore F1** | +5.7% | +0.17% |
+
+### 🎯 핵심 성과
+
+- **📊 ROUGE-1**: Google 번역 대비 **67.2% 향상** (0.3011 → 0.5034)
+- **📊 ROUGE-2**: Google 번역 대비 **100.6% 향상** (0.1426 → 0.2861) 
+- **🧠 BERTScore**: 의미적 유사도 **5.9% 향상** (0.9014 → 0.9547)
+- **🎯 RAG 효과**: 특히 ROUGE-2에서 Baseline 대비 **15.0% 추가 향상**
+- **⚡ 일관성**: 모든 지표에서 지속적인 성능 향상 확인
 
 ---
 
