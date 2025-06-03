@@ -45,6 +45,10 @@ graph TD
 ## 🏛️ 시스템 아키텍처
 
 <div align="center">
+<img src="https://github.com/user-attachments/assets/23ef2bdd-c3df-4ba8-bc48-c4851c85cd72" alt="번역 성능 비교" width="500" />
+</div>
+
+<div align="center">
 
 ```mermaid
 graph TB
@@ -96,6 +100,29 @@ graph TB
 ```
 
 </div>
+
+### 🎯 시스템 구성 요소
+
+#### 📱 Client
+- **Pull-to-refresh**: 무한 스크롤 적응을 통한 데이터 갱신 접근성 향상
+- **Flutter Provider 기반**: 상태관리 / 메모리 캐싱으로 데이터 지속성 유지
+
+#### ⚙️ Server
+- **Twikit + Selenium 조합**: 트위터 인증 크롤링 완전 자동화
+- **LLM 처리결과의 DB 영속화**: 레이턴시·서버 부하·API 비용 절감
+- **Keyset 기반 페이징**: 대용량 데이터 효율적 조회
+
+#### 🤖 LLM Pipeline
+- **각 기능을 독립된 LLMChain으로 구현**: (유지보수·기능 확장성)
+- **무손실 멀티미디어 전후처리로 번역 중**: 의미왜곡 방지 및 번역 품질 향상
+- **RAG 기반 프롬프팅**: 번역 정확도 향상
+
+### 💡 성능 향상 기법
+
+- **문맥 기반 번역**: RAG를 통한 도메인 특화 용어 정확도 향상
+- **Few-shot 프롬프팅**: 고품질 번역 예시를 통한 번역 일관성 개선
+- **하이브리드 검색**: Lexical + Semantic 검색으로 최적 컨텍스트 제공
+- **전후처리 파이프라인**: 해시태그, 이모지 등 멀티미디어 요소 무손실 처리
 
 ---
 
