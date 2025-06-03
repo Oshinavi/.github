@@ -333,15 +333,15 @@ LLM+Few-shot prompting과 RAG를 적용하여 일본어-한국어 번역 품질�
 ```mermaid
 graph TD
     Google["🔴 Google 번역<br/><b>ROUGE-1: 0.3011</b><br/><b>BERTScore: 0.9014</b>"]
-    Baseline["🟡 Baseline LLM<br/><b>ROUGE-1: 0.4812</b><br/><b>BERTScore: 0.9531</b>"]
-    RAG["🟢 LLM+RAG 적용<br/><b>ROUGE-1: 0.5034</b><br/><b>BERTScore: 0.9547</b>"]
+    LLM+Few-shot["🟡 LLM+Few-shot<br/><b>ROUGE-1: 0.4812</b><br/><b>BERTScore: 0.9531</b>"]
+    LLM+Few-shot+RAG["🟢 LLM+Few-shot+RAG<br/><b>ROUGE-1: 0.5034</b><br/><b>BERTScore: 0.9547</b>"]
     
-    Google ==> Baseline
-    Baseline ==> RAG
+    Google ==> LLM+Few-shot
+    LLM+Few-shot ==> LLM+Few-shot+RAG
     
     style Google fill:#FFE6E6,stroke:#D32F2F,stroke-width:3px,color:#000
-    style Baseline fill:#FFF2CC,stroke:#F57F17,stroke-width:3px,color:#000
-    style RAG fill:#E8F5E8,stroke:#388E3C,stroke-width:3px,color:#000
+    style LLM+Few-shot fill:#FFF2CC,stroke:#F57F17,stroke-width:3px,color:#000
+    style LLM+Few-shot+RAG fill:#E8F5E8,stroke:#388E3C,stroke-width:3px,color:#000
     
     linkStyle 0 stroke:#666,stroke-width:4px
     linkStyle 1 stroke:#666,stroke-width:4px
