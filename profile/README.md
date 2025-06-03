@@ -449,7 +449,7 @@ graph TD
   - Fugashi (일본어 토크나이저)  
 - **모델 API**:  
   - OpenAI(`gpt-4o-mini-2024-07-18`)  
-  - Claude(`claude-3-5-sonnet`, `claude-3-5-haiku`)  
+  - Claude(`claude-3-7-sonnet`, `claude-3-5-haiku`)  
 - **텍스트 전처리·후처리**:  
   - 해시태그/RT 접두사 마스킹 & 복원 (TextMasker)  
   - 이모지 추출 및 복원  
