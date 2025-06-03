@@ -306,6 +306,59 @@ graph TD
 
 ---
 
+## 📊 번역 성능 평가
+
+### 🎯 성능 비교 결과
+
+LLM+Few-shot prompting과 RAG를 적용하여 일본어-한국어 번역 품질이 크게 개선되었습니다.
+
+<div align="center">
+
+```mermaid
+graph TD
+    Google["🔴 Google 번역<br/><b>ROUGE-1: 0.3011</b><br/><b>BERTScore: 0.9014</b>"]
+    Baseline["🟡 Baseline LLM<br/><b>ROUGE-1: 0.4812</b><br/><b>BERTScore: 0.9531</b>"]
+    RAG["🟢 LLM+RAG 적용<br/><b>ROUGE-1: 0.5034</b><br/><b>BERTScore: 0.9547</b>"]
+    
+    Google ==> Baseline
+    Baseline ==> RAG
+    
+    style Google fill:#FFE6E6,stroke:#D32F2F,stroke-width:3px,color:#000
+    style Baseline fill:#FFF2CC,stroke:#F57F17,stroke-width:3px,color:#000
+    style RAG fill:#E8F5E8,stroke:#388E3C,stroke-width:3px,color:#000
+    
+    linkStyle 0 stroke:#666,stroke-width:4px
+    linkStyle 1 stroke:#666,stroke-width:4px
+```
+
+</div>
+
+### 📈 상세 성능 지표
+
+| 평가 모델 | ROUGE-1 | ROUGE-2 | ROUGE-L | BERTScore F1 |
+|:--------:|:-------:|:-------:|:-------:|:------------:|
+| **🔴 Google 번역** | 0.3011 | 0.1426 | 0.3005 | 0.9014 |
+| **🟡 LLM+Few-shot** | 0.4812 | 0.2488 | 0.4801 | 0.9531 |
+| **🟢 LLM+Few-shot+RAG 적용** | **0.5034** | **0.2861** | **0.5030** | **0.9547** |
+
+### 📊 단계별 성능 개선율
+
+| 지표 | Google → Baseline | Baseline → RAG적용 |
+|:----:|:-----------------:|:-----------------:|
+| **ROUGE-1** | +59.8% | +4.6% |
+| **ROUGE-2** | +74.5% | +15.0% |
+| **ROUGE-L** | +59.8% | +4.8% |
+| **BERTScore F1** | +5.7% | +0.17% |
+
+### 🎯 핵심 성과
+
+- **📊 ROUGE-1**: Google 번역 대비 **67.2% 향상** (0.3011 → 0.5034)
+- **📊 ROUGE-2**: Google 번역 대비 **100.6% 향상** (0.1426 → 0.2861) 
+- **🧠 BERTScore**: 의미적 유사도 **5.9% 향상** (0.9014 → 0.9547)
+- **🎯 RAG 효과**: 특히 ROUGE-2에서 Baseline 대비 **15.0% 추가 향상**
+- **⚡ 일관성**: 모든 지표에서 지속적인 성능 향상 확인
+
+
 ## 💻 기술 스택
 
 ### 🖥️ Frontend (Flutter)
