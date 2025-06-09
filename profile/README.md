@@ -178,50 +178,44 @@ graph TD
     ReplyPath --> ReplyLLM
     ReplyLLM --> Output
     
-    %% Few-shot 연결
-    FewShot -.-> TranslationLLM
-    FewShot -.-> ClassificationLLM
-    FewShot -.-> ScheduleLLM
-    TwitterReplies -.-> ReplyLLM
+    %% Few-shot 연결 (더 굵고 명확한 점선)
+    FewShot ==> TranslationLLM
+    FewShot ==> ClassificationLLM
+    FewShot ==> ScheduleLLM
+    TwitterReplies ==> ReplyLLM
     
-    %% 스타일링
-    style Input fill:#4CAF50,stroke:#fff,stroke-width:3px,color:#fff
-    style Output fill:#4CAF50,stroke:#fff,stroke-width:3px,color:#fff
+    %% 스타일링 - 입출력
+    style Input fill:#4CAF50,stroke:#2E7D32,stroke-width:3px,color:#fff
+    style Output fill:#4CAF50,stroke:#2E7D32,stroke-width:3px,color:#fff
     
-    style TranslationPath fill:#2196F3,stroke:#fff,stroke-width:2px,color:#fff
-    style ClassificationPath fill:#FF9800,stroke:#fff,stroke-width:2px,color:#fff
-    style SchedulePath fill:#4CAF50,stroke:#fff,stroke-width:2px,color:#fff
-    style ReplyPath fill:#F44336,stroke:#fff,stroke-width:2px,color:#fff
+    %% 경로별 색상 (텍스트 가독성 개선)
+    style TranslationPath fill:#1976D2,stroke:#0D47A1,stroke-width:2px,color:#fff
+    style ClassificationPath fill:#F57C00,stroke:#E65100,stroke-width:2px,color:#fff
+    style SchedulePath fill:#388E3C,stroke:#1B5E20,stroke-width:2px,color:#fff
+    style ReplyPath fill:#D32F2F,stroke:#B71C1C,stroke-width:2px,color:#fff
     
-    style TranslationFlow fill:#E3F2FD,stroke:#2196F3,stroke-width:2px
-    style ClassificationFlow fill:#FFF3E0,stroke:#FF9800,stroke-width:2px
-    style ScheduleFlow fill:#E8F5E8,stroke:#4CAF50,stroke-width:2px
-    style ReplyFlow fill:#FFEBEE,stroke:#F44336,stroke-width:2px
+    %% 서브그래프 배경 (더 밝게, 텍스트 대비 향상)
+    style TranslationFlow fill:#E1F5FE,stroke:#1976D2,stroke-width:2px,color:#0D47A1
+    style ClassificationFlow fill:#FFF8E1,stroke:#F57C00,stroke-width:2px,color:#E65100
+    style ScheduleFlow fill:#E8F5E8,stroke:#388E3C,stroke-width:2px,color:#1B5E20
+    style ReplyFlow fill:#FFEBEE,stroke:#D32F2F,stroke-width:2px,color:#B71C1C
     
-    style FewShot fill:#9C27B0,stroke:#fff,stroke-width:2px,color:#fff
-    style TwitterReplies fill:#1DA1F2,stroke:#fff,stroke-width:2px,color:#fff
+    %% 개별 노드 스타일링 (가독성 향상)
+    style PreProcess fill:#BBDEFB,stroke:#1976D2,stroke-width:2px,color:#0D47A1
+    style TranslationRAG fill:#BBDEFB,stroke:#1976D2,stroke-width:2px,color:#0D47A1
+    style TranslationLLM fill:#90CAF9,stroke:#1976D2,stroke-width:2px,color:#0D47A1
+    style PostProcess fill:#BBDEFB,stroke:#1976D2,stroke-width:2px,color:#0D47A1
     
-    %% 링크 색상
-    linkStyle 0 stroke:#2196F3,stroke-width:3px
-    linkStyle 1 stroke:#FF9800,stroke-width:3px
-    linkStyle 2 stroke:#4CAF50,stroke-width:3px
-    linkStyle 3 stroke:#F44336,stroke-width:3px
+    style ClassificationRAG fill:#FFE0B2,stroke:#F57C00,stroke-width:2px,color:#E65100
+    style ClassificationLLM fill:#FFCC80,stroke:#F57C00,stroke-width:2px,color:#E65100
     
-    linkStyle 4 stroke:#2196F3,stroke-width:3px
-    linkStyle 5 stroke:#2196F3,stroke-width:3px
-    linkStyle 6 stroke:#2196F3,stroke-width:3px
-    linkStyle 7 stroke:#2196F3,stroke-width:3px
-    linkStyle 8 stroke:#2196F3,stroke-width:3px
+    style ScheduleLLM fill:#C8E6C9,stroke:#388E3C,stroke-width:2px,color:#1B5E20
     
-    linkStyle 9 stroke:#FF9800,stroke-width:3px
-    linkStyle 10 stroke:#FF9800,stroke-width:3px
-    linkStyle 11 stroke:#FF9800,stroke-width:3px
+    style ReplyLLM fill:#FFCDD2,stroke:#D32F2F,stroke-width:2px,color:#B71C1C
     
-    linkStyle 12 stroke:#4CAF50,stroke-width:3px
-    linkStyle 13 stroke:#4CAF50,stroke-width:3px
-    
-    linkStyle 14 stroke:#F44336,stroke-width:3px
-    linkStyle 15 stroke:#F44336,stroke-width:3px
+    %% Few-shot 스타일링 (더 강조)
+    style FewShot fill:#7B1FA2,stroke:#4A148C,stroke-width:3px,color:#fff
+    style TwitterReplies fill:#1976D2,stroke:#0D47A1,stroke-width:3px,color:#fff
 ```
 
 </div>
