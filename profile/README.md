@@ -332,9 +332,9 @@ LLM+Few-shot prompting과 RAG를 적용하여 일본어-한국어 번역 품질�
 
 ```mermaid
 graph TD
-    Google["🔴 Google 번역<br/><b>ROUGE-1: 0.3011</b><br/><b>BERTScore: 0.9014</b>"]
-    LLM+Few-shot["🟡 LLM+Few-shot<br/><b>ROUGE-1: 0.4812</b><br/><b>BERTScore: 0.9531</b>"]
-    LLM+Few-shot+RAG["🟢 LLM+Few-shot+RAG<br/><b>ROUGE-1: 0.5034</b><br/><b>BERTScore: 0.9547</b>"]
+    Google["🔴 Google 번역<br/><b>BLEU: 19.75</b><br/><b>ROUGE-1: 0.3011</b><br/><b>BERTScore: 0.9014</b>"]
+    LLM+Few-shot["🟡 LLM+Few-shot<br/><b>BLEU: 38.81</b><br/><b>ROUGE-1: 0.4812</b><br/><b>BERTScore: 0.9531</b>"]
+    LLM+Few-shot+RAG["🟢 LLM+Few-shot+RAG<br/><b>BLEU: 40.61</b><br/><b>ROUGE-1: 0.5034</b><br/><b>BERTScore: 0.9547</b>"]
     
     Google ==> LLM+Few-shot
     LLM+Few-shot ==> LLM+Few-shot+RAG
@@ -351,16 +351,17 @@ graph TD
 
 ### 📈 상세 성능 지표
 
-| 평가 모델 | ROUGE-1 | ROUGE-2 | ROUGE-L | BERTScore F1 |
-|:--------:|:-------:|:-------:|:-------:|:------------:|
-| **🔴 Google 번역** | 0.3011 | 0.1426 | 0.3005 | 0.9014 |
-| **🟡 LLM+Few-shot** | 0.4812 | 0.2488 | 0.4801 | 0.9531 |
-| **🟢 LLM+Few-shot+RAG 적용** | **0.5034** | **0.2861** | **0.5030** | **0.9547** |
+| 평가 모델 | BLEU | ROUGE-1 | ROUGE-2 | ROUGE-L | BERTScore F1 |
+|:--------:|:-------:|:-------:|:-------:|:-------:|:------------:|
+| **🔴 Google 번역** | 19.75 | 0.3011 | 0.1426 | 0.3005 | 0.9014 |
+| **🟡 LLM+Few-shot** | 38.81 | 0.4812 | 0.2488 | 0.4801 | 0.9531 |
+| **🟢 LLM+Few-shot+RAG 적용** | **40.61** | **0.5034** | **0.2861** | **0.5030** | **0.9547** |
 
 ### 📊 단계별 성능 개선율
 
-| 지표 | Google → Baseline | Baseline → RAG적용 |
+| 지표 | Google → LLM+Few-shot | LLM+Few-shot → RAG적용 |
 |:----:|:-----------------:|:-----------------:|
+| **BLEU** | +96.5% | +4.6% |
 | **ROUGE-1** | +59.8% | +4.6% |
 | **ROUGE-2** | +74.5% | +15.0% |
 | **ROUGE-L** | +59.8% | +4.8% |
