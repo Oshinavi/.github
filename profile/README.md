@@ -473,3 +473,129 @@ graph TD
 | 📱 **포스트(트윗) 상세·리플라이** | 포스트 본문 & 이미지 그리드 표시 → 리플라이 작성/전송 → 자동 생성 기능  | ![완료](https://img.shields.io/badge/완료-28a745?style=flat-square) |
 | 👤 **프로필 조회** | 유저 프로필(이름·스크린네임·팔로워·바이오) 불러오기 & 표시  | ![완료](https://img.shields.io/badge/완료-28a745?style=flat-square) |
 | ⚙️ **설정 (Settings)** | 다크 모드 토글 (SharedPreferences), 기타 커스텀 환경설정  | ![완료](https://img.shields.io/badge/완료-28a745?style=flat-square) |
+
+
+
+### 📱 기능 상세 설명
+
+<details>
+<summary>🔐 <b>로그인 & 최애 등록</b> (클릭하여 펼치기)</summary>
+
+#### 🎯 핵심 기능
+- **Twikit 라이브러리를 통해 회원가입 시 입력한 본인의 트위터 계정과 연동되어 로그인**
+- **등록한 최애(오시) 만의 번역된 트윗과 이벤트 정보만을 모아서 볼 수 있도록 구현**
+
+#### 📸 기능 스크린샷
+
+<div align="center">
+<img width="200" alt="로그인 화면" src="https://github.com/user-attachments/assets/9a63e400-8a4f-4074-84e4-732a41e5abbd" style="margin: 5px;" />
+<img width="200" alt="최애 등록 화면" src="https://github.com/user-attachments/assets/82f9a767-4888-4eb1-84bc-5d1b3cb3c92f" style="margin: 5px;" />
+<img width="200" alt="홈 피드 화면" src="https://github.com/user-attachments/assets/a66868e5-64f5-4a6b-becd-ea965869ee53" style="margin: 5px;" />
+<img width="200" alt="프로필 화면" src="https://github.com/user-attachments/assets/106d9427-63d5-4205-b215-5df56057594b" style="margin: 5px;" />
+</div>
+
+#### 💡 특징
+- 트위터 계정 연동
+- 개인화된 최애 아티스트 콘텐츠 큐레이션
+- 안전한 JWT 기반 인증 시스템
+
+</details>
+
+<details>
+<summary>🏠 <b>홈 피드 & 포스트</b> (클릭하여 펼치기)</summary>
+
+#### 🎯 핵심 기능
+- **Pull-to-refresh 및 무한 스크롤 적용 페이징**
+- **LLM + RAG 기반 자동 번역 제공(토글로 원문 전환 가능)**
+- **높은 번역 정확도 + 자연스러움**
+- **LLM 수행 결과 DB 영속화**
+- **Selenium을 통한 트위터 미디어 수집 및 제공**
+
+#### 📸 기능 스크린샷
+
+<div align="center">
+<img width="200" alt="홈 피드 화면" src="https://github.com/user-attachments/assets/4e0f6bca-01da-471c-a548-31dcb2783a25" />
+<img width="200" alt="번역 토글 기능" src="https://github.com/user-attachments/assets/3e8665ee-1da2-41e0-be9f-b0301e78628f" />
+<img width="200" alt="미디어 표시 화면" src="https://github.com/user-attachments/assets/076a8f79-18db-40e3-ae50-e0b1d892e118" />
+<img width="200" alt="무한 스크롤" src="https://github.com/user-attachments/assets/08bb0640-73ca-4104-9533-6746fc62cfb8" />
+</div>
+
+#### 💡 특징
+- 직관적인 무한 스크롤 인터페이스
+- 원문/번역문 실시간 전환 기능
+- 트위터와 동일한 미디어 표시 경험
+
+</details>
+
+<details>
+<summary>💬 <b>리플라이 자동 생성 & 전송</b> (클릭하여 펼치기)</summary>
+
+#### 🎯 핵심 기능
+- **페르소나 기반 팬 시선의 리플라이**
+- **실제 리플라이 Few-shot 제공**
+- **리플라이 전송 및 삭제**
+
+#### 📸 기능 스크린샷
+
+<div align="center">
+<img width="200" alt="리플라이 생성 화면" src="https://github.com/user-attachments/assets/51040052-887d-4635-9d04-00dc38c98e24" />
+<img width="200" alt="리플라이 전송 화면" src="https://github.com/user-attachments/assets/6f25b2b0-328b-4a90-a329-7691eb693bb1" />
+<img width="200" alt="실제 트위터 전송 확인" src="https://github.com/user-attachments/assets/117f83a1-a0a1-4e10-ad55-4d44b406a570" />
+<img width="200" alt="리플라이 관리" src="https://github.com/user-attachments/assets/4308420e-508a-460d-85fd-f493e38ab9d8" />
+</div>
+
+#### 💡 특징
+- AI 기반 자연스러운 팬 리플라이 생성
+- 실제 트위터 리플라이 데이터 학습
+- 원클릭 전송 및 관리 기능
+- 팬 문화에 맞는 톤앤매너 적용
+
+</details>
+
+<details>
+<summary>📅 <b>이벤트 일정 추출 & 캘린더 등록</b> (클릭하여 펼치기)</summary>
+
+#### 🎯 핵심 기능
+- **텍스트 분석을 통한 자동 카테고라이징 & 이벤트 일정 정보 추출**
+- **일정 등록 시간 획기적 단축**
+- **각 아티스트별 캘린더에 일정 정보 자동 등록**
+- **다른 유저와 일정 정보 공유**
+
+#### 📸 기능 스크린샷
+
+<div align="center">
+<img width="200" alt="캘린더 등록 화면" src="https://github.com/user-attachments/assets/f84335d8-cd33-4504-a97a-00f74a9f4e8f" />
+<img width="200" alt="아티스트별 캘린더" src="https://github.com/user-attachments/assets/48bd3743-5a06-4986-ae85-006e4082d1ac" />
+<img width="200" alt="일정 추출 화면" src="https://github.com/user-attachments/assets/ab94817d-f634-4028-9b4e-6d2a04ab420b" />
+</div>
+
+#### 💡 특징
+- 스마트한 이벤트 정보 자동 인식
+- 아티스트별 개별 캘린더 관리
+- 타 유저와 일정 정보 공유
+- 수동 입력 대비 90% 시간 절약
+
+</details>
+
+<details>
+<summary>👤 <b>프로필 조회 & 설정</b> (클릭하여 펼치기)</summary>
+
+#### 🎯 핵심 기능
+- **실제 트위터 프로필 및 바이오 정보 표시**
+- **라이트/다크 모드 테마 제공**
+
+#### 📸 기능 스크린샷
+
+<div align="center">
+<img width="200" alt="프로필 화면" src="https://github.com/user-attachments/assets/eecdef50-b7a2-4bf3-82d7-3b414f4e16cc" />
+<img width="200" alt="설정 화면" src="https://github.com/user-attachments/assets/8c091591-dbd2-480f-89a2-51d7d590f253" />
+<img width="200" alt="다크모드" src="https://github.com/user-attachments/assets/c7f58adc-035f-4eb0-bd88-b8296c60a671" />
+<img width="200" alt="계정 관리" src="https://github.com/user-attachments/assets/c4c6b951-84fe-4f36-b730-61aba6f27247" />
+</div>
+
+#### 💡 특징
+- 실시간 트위터 프로필 동기화
+- 직관적인 테마 전환 기능
+- SharedPreferences 기반 설정 저장
+
+</details>
