@@ -593,3 +593,7 @@ graph TD
 - SharedPreferences 기반 설정 저장
 
 </details>
+
+
+### 🎥 시연 영상
+https://drive.google.com/file/d/1bwvV0hczTHTbX9SEdNtjEYTGT3L3piIG/view?usp=drive_link
